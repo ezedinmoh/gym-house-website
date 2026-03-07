@@ -45,9 +45,6 @@ A fully responsive fitness website with interactive calculators, workout planner
 
 **Live Site**: https://gym-house-website.netlify.app/login
 
-**GitHub**: [Add your GitHub repo URL here]
-
----
 
 ## 🛠️ Technologies
 
