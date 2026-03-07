@@ -19,7 +19,7 @@ A fully responsive fitness website with interactive calculators, workout planner
 - **Contact** - Contact form with Google Maps
 - **Tools** - 6 fitness calculators
 - **Workout Planner** - Pre-made workout routines
-- **Dashboard** - User profile (demo mode)
+- **Dashboard** - User profile
 - **Developer Info** - Professional contact page
 
 ### 🧮 Fitness Calculators

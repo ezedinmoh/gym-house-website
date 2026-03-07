@@ -124,8 +124,20 @@ if (registerForm) {
                 showMessage(messageEl, data.message || 'Registration failed. Please try again.', 'error');
             }
         } catch (error) {
-            // If backend is not available, show demo success message
-            showMessage(messageEl, '🎉 Account created successfully! (Demo Mode - No backend connected)', 'success');
+            // Store user data in localStorage
+            const userData = {
+                id: Date.now(),
+                username: username,
+                email: email,
+                created_at: new Date().toISOString()
+            };
+            
+            // Save to localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            users.push(userData);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            showMessage(messageEl, '🎉 Registration successful! Redirecting to login...', 'success');
             registerForm.reset();
             
             // Switch to login tab after 2 seconds
@@ -184,22 +196,25 @@ if (loginForm) {
                 submitBtn.disabled = false;
             }
         } catch (error) {
-            // If backend is not available, create demo user and login
-            showMessage(messageEl, '✅ Login successful! (Demo Mode - No backend connected)', 'success');
+            // Check localStorage for user
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            const user = users.find(u => u.email === email);
             
-            // Create demo user data
-            const demoUser = {
-                id: 1,
-                username: email.split('@')[0],
-                email: email
-            };
-            
-            localStorage.setItem('user', JSON.stringify(demoUser));
-            
-            // Redirect to dashboard
-            setTimeout(() => {
-                window.location.href = 'dashboard.html';
-            }, 1500);
+            if (user) {
+                showMessage(messageEl, '✅ Login successful! Redirecting to dashboard...', 'success');
+                
+                // Store current user session
+                localStorage.setItem('user', JSON.stringify(user));
+                
+                // Redirect to dashboard
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+            } else {
+                showMessage(messageEl, 'Invalid email or password. Please register first.', 'error');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+            }
         }
     });
 }
