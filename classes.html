@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes - Gym House</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYM HOUSE</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="classes.html" class="active">Classes</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Our Classes</h1>
+        <p>Find the perfect workout for your goals</p>
+    </section>
+
+    <!-- Class Filters -->
+    <section class="class-filters">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Classes</button>
+                <button class="filter-btn" data-filter="strength">Strength</button>
+                <button class="filter-btn" data-filter="cardio">Cardio</button>
+                <button class="filter-btn" data-filter="yoga">Yoga</button>
+                <button class="filter-btn" data-filter="hiit">HIIT</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes Grid -->
+    <section class="classes-section">
+        <div class="container">
+            <div class="classes-grid">
+                <div class="class-card" data-category="strength">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=400" alt="Strength Training">
+                        <div class="class-badge">Strength</div>
+                    </div>
+                    <div class="class-content">
+                        <div class="class-header">
+                            <h3>Strength Training</h3>
+                            <button class="favorite-btn" data-favorite-type="class" data-favorite-id="strength-1" onclick="toggleFavorite('class', 'strength-1', 'Strength Training')">
+                                <i class="far fa-heart"></i>
+                            </button>
+                        </div>
+                        <p>Build muscle and increase strength with our comprehensive weight training program.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                            <span><i class="fas fa-fire"></i> High Intensity</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Mon, Wed, Fri - 6:00 AM, 6:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="cardio">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1538805060514-97d9cc17730c?w=400" alt="Cardio Blast">
+                        <div class="class-badge">Cardio</div>
+                    </div>
+                    <div class="class-content">
+                        <h3>Cardio Blast</h3>
+                        <p>High-energy cardio workout to burn calories and improve endurance.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-fire"></i> High Intensity</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Tue, Thu, Sat - 7:00 AM, 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="yoga">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400" alt="Yoga Flow">
+                        <div class="class-badge">Yoga</div>
+                    </div>
+                    <div class="class-content">
+                        <h3>Yoga Flow</h3>
+                        <p>Improve flexibility, balance, and mindfulness through guided yoga sessions.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                            <span><i class="fas fa-fire"></i> Low Intensity</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Daily - 8:00 AM, 7:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="hiit">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=400" alt="HIIT">
+                        <div class="class-badge">HIIT</div>
+                    </div>
+                    <div class="class-content">
+                        <h3>HIIT Workout</h3>
+                        <p>Maximum calorie burn with high-intensity interval training.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 30 min</span>
+                            <span><i class="fas fa-fire"></i> Very High</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Mon, Wed, Fri - 7:00 AM, 12:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="strength">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400" alt="CrossFit">
+                        <div class="class-badge">Strength</div>
+                    </div>
+                    <div class="class-content">
+                        <h3>CrossFit</h3>
+                        <p>Functional fitness combining strength, cardio, and gymnastics movements.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 60 min</span>
+                            <span><i class="fas fa-fire"></i> Very High</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Tue, Thu, Sat - 6:00 AM, 5:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="class-card" data-category="cardio">
+                    <div class="class-image">
+                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400" alt="Spin Class">
+                        <div class="class-badge">Cardio</div>
+                    </div>
+                    <div class="class-content">
+                        <h3>Spin Class</h3>
+                        <p>Indoor cycling workout with motivating music and energetic instructors.</p>
+                        <div class="class-meta">
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-fire"></i> High Intensity</span>
+                        </div>
+                        <div class="class-schedule">
+                            <p><strong>Schedule:</strong> Mon, Wed, Fri - 6:30 AM, 6:30 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gym House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

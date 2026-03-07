@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Planner - Gym House</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="scrollProgress"></div>
+    
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYM HOUSE</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="searchBtn" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <label class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Workout Planner</h1>
+        <p>Create your personalized workout routine</p>
+    </section>
+
+    <section class="planner-section">
+        <div class="container">
+            <!-- Motivational Quote -->
+            <div class="quote-card">
+                <blockquote>"The only bad workout is the one that didn't happen."</blockquote>
+                <cite>- Unknown</cite>
+            </div>
+
+            <!-- Sample Workout Plans -->
+            <div class="workout-plans-grid">
+                <div class="workout-plan">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3><i class="fas fa-dumbbell"></i> Beginner Full Body</h3>
+                        <button onclick="printWorkoutPlan()" class="btn btn-outline">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">3 days per week • 45 minutes</p>
+                    
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Squats</h4>
+                            <p>Compound leg exercise</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 12 reps
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Push-ups</h4>
+                            <p>Upper body strength</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 10 reps
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Dumbbell Rows</h4>
+                            <p>Back and biceps</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 12 reps
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Plank</h4>
+                            <p>Core stability</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 30 sec
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Lunges</h4>
+                            <p>Leg strength and balance</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 10 reps
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workout-plan">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3><i class="fas fa-fire"></i> HIIT Cardio Blast</h3>
+                        <button onclick="printWorkoutPlan()" class="btn btn-outline">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">4 days per week • 30 minutes</p>
+                    
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Jumping Jacks</h4>
+                            <p>Warm-up cardio</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            3 sets × 30 sec
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Burpees</h4>
+                            <p>Full body explosive</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            4 sets × 15 reps
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Mountain Climbers</h4>
+                            <p>Core and cardio</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            4 sets × 20 reps
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>High Knees</h4>
+                            <p>Cardio intensity</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            4 sets × 30 sec
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Jump Squats</h4>
+                            <p>Explosive leg power</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            4 sets × 12 reps
+                        </div>
+                    </div>
+                </div>
+
+                <div class="workout-plan">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3><i class="fas fa-om"></i> Yoga & Flexibility</h3>
+                        <button onclick="printWorkoutPlan()" class="btn btn-outline">
+                            <i class="fas fa-print"></i> Print
+                        </button>
+                    </div>
+                    <p style="color: #666; margin-bottom: 1.5rem;">Daily • 20 minutes</p>
+                    
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Sun Salutation</h4>
+                            <p>Full body flow</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            5 rounds
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Downward Dog</h4>
+                            <p>Stretch and strengthen</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            Hold 1 min
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Warrior Pose</h4>
+                            <p>Balance and strength</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            Hold 45 sec
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Child's Pose</h4>
+                            <p>Relaxation stretch</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            Hold 2 min
+                        </div>
+                    </div>
+
+                    <div class="workout-exercise">
+                        <div class="workout-exercise-info">
+                            <h4>Seated Forward Bend</h4>
+                            <p>Hamstring stretch</p>
+                        </div>
+                        <div class="workout-exercise-sets">
+                            Hold 1 min
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Tracker -->
+            <div class="progress-tracker" style="margin-top: 3rem;">
+                <h2 style="margin-bottom: 1.5rem;">Weekly Progress</h2>
+                
+                <div class="progress-item">
+                    <span>Monday</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                    <span>✓ Complete</span>
+                </div>
+
+                <div class="progress-item">
+                    <span>Tuesday</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 100%;"></div>
+                    </div>
+                    <span>✓ Complete</span>
+                </div>
+
+                <div class="progress-item">
+                    <span>Wednesday</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 50%;"></div>
+                    </div>
+                    <span>In Progress</span>
+                </div>
+
+                <div class="progress-item">
+                    <span>Thursday</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <span>Pending</span>
+                </div>
+
+                <div class="progress-item">
+                    <span>Friday</span>
+                    <div class="progress-bar-container">
+                        <div class="progress-bar-fill" style="width: 0%;"></div>
+                    </div>
+                    <span>Pending</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <button id="searchClose" class="search-close">&times;</button>
+            <h2>Search</h2>
+            <input type="text" id="searchInput" placeholder="Search classes, trainers, blog posts..." class="search-input">
+            <div id="searchResults" class="search-results">
+                <p>Start typing to search...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gym House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tools - Gym House</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="scrollProgress"></div>
+    
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYM HOUSE</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="tools.html" class="active">Tools</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-nav">Login</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button id="searchBtn" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <label class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Fitness Tools & Calculators</h1>
+        <p>Free tools to help you reach your fitness goals</p>
+    </section>
+
+    <section class="tools-section">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- BMI Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-weight"></i>
+                    </div>
+                    <h3>BMI Calculator</h3>
+                    <p>Calculate your Body Mass Index</p>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="bmiWeight" placeholder="70" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="bmiHeight" placeholder="170" min="1">
+                        </div>
+                        <button onclick="calculateBMI()" class="btn btn-primary btn-full">Calculate</button>
+                        <div class="calculator-result">
+                            <p>Your BMI: <span id="bmiResult">-</span></p>
+                            <p>Category: <span id="bmiCategory">-</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Calorie Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Calorie Calculator</h3>
+                    <p>Calculate your daily calorie needs</p>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" id="calorieAge" placeholder="25" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="calorieWeight" placeholder="70" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="calorieHeight" placeholder="170" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="calorieGender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Activity Level</label>
+                            <select id="calorieActivity">
+                                <option value="">Select</option>
+                                <option value="1.2">Sedentary (little or no exercise)</option>
+                                <option value="1.375">Lightly active (1-3 days/week)</option>
+                                <option value="1.55">Moderately active (3-5 days/week)</option>
+                                <option value="1.725">Very active (6-7 days/week)</option>
+                                <option value="1.9">Super active (athlete)</option>
+                            </select>
+                        </div>
+                        <button onclick="calculateCalories()" class="btn btn-primary btn-full">Calculate</button>
+                        <div id="calorieResult" class="calculator-result"></div>
+                    </div>
+                </div>
+
+                <!-- Workout Timer -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-stopwatch"></i>
+                    </div>
+                    <h3>Workout Timer</h3>
+                    <p>Track your workout duration</p>
+                    <div class="timer-display" id="timerDisplay">00:00:00</div>
+                    <div class="timer-controls">
+                        <button onclick="startTimer()" id="timerStart" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start
+                        </button>
+                        <button onclick="pauseTimer()" id="timerPause" class="btn btn-secondary" disabled>
+                            <i class="fas fa-pause"></i> Pause
+                        </button>
+                        <button onclick="resetTimer()" id="timerReset" class="btn btn-outline">
+                            <i class="fas fa-redo"></i> Reset
+                        </button>
+                    </div>
+                </div>
+
+                <!-- One Rep Max Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-dumbbell"></i>
+                    </div>
+                    <h3>One Rep Max Calculator</h3>
+                    <p>Calculate your maximum lift capacity</p>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Weight Lifted (kg)</label>
+                            <input type="number" id="ormWeight" placeholder="100" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Repetitions</label>
+                            <input type="number" id="ormReps" placeholder="5" min="1" max="12">
+                        </div>
+                        <button onclick="calculateORM()" class="btn btn-primary btn-full">Calculate</button>
+                        <div class="calculator-result">
+                            <p>Estimated 1RM: <span id="ormResult">-</span> kg</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Body Fat Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>Body Fat Calculator</h3>
+                    <p>Estimate your body fat percentage</p>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <select id="bfGender">
+                                <option value="">Select</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Age</label>
+                            <input type="number" id="bfAge" placeholder="25" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="bfWeight" placeholder="70" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Height (cm)</label>
+                            <input type="number" id="bfHeight" placeholder="170" min="1">
+                        </div>
+                        <button onclick="calculateBodyFat()" class="btn btn-primary btn-full">Calculate</button>
+                        <div class="calculator-result">
+                            <p>Estimated Body Fat: <span id="bfResult">-</span>%</p>
+                            <p>Category: <span id="bfCategory">-</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Water Intake Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3>Water Intake Calculator</h3>
+                    <p>Calculate daily water needs</p>
+                    <div class="calculator-form">
+                        <div class="form-group">
+                            <label>Weight (kg)</label>
+                            <input type="number" id="waterWeight" placeholder="70" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label>Activity Level</label>
+                            <select id="waterActivity">
+                                <option value="30">Low (30ml/kg)</option>
+                                <option value="35" selected>Moderate (35ml/kg)</option>
+                                <option value="40">High (40ml/kg)</option>
+                            </select>
+                        </div>
+                        <button onclick="calculateWater()" class="btn btn-primary btn-full">Calculate</button>
+                        <div class="calculator-result">
+                            <p>Daily Water: <span id="waterResult">-</span> liters</p>
+                            <p>Glasses (250ml): <span id="waterGlasses">-</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <button id="searchClose" class="search-close">&times;</button>
+            <h2>Search</h2>
+            <input type="text" id="searchInput" placeholder="Search classes, trainers, blog posts..." class="search-input">
+            <div id="searchResults" class="search-results">
+                <p>Start typing to search...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gym House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // One Rep Max Calculator
+        function calculateORM() {
+            const weight = parseFloat(document.getElementById('ormWeight')?.value);
+            const reps = parseInt(document.getElementById('ormReps')?.value);
+            const resultEl = document.getElementById('ormResult');
+            
+            if (!weight || !reps || weight <= 0 || reps <= 0) {
+                if (resultEl) resultEl.textContent = 'Invalid input';
+                return;
+            }
+            
+            // Epley Formula
+            const orm = weight * (1 + reps / 30);
+            if (resultEl) resultEl.textContent = orm.toFixed(1);
+        }
+
+        // Body Fat Calculator
+        function calculateBodyFat() {
+            const gender = document.getElementById('bfGender')?.value;
+            const age = parseInt(document.getElementById('bfAge')?.value);
+            const weight = parseFloat(document.getElementById('bfWeight')?.value);
+            const height = parseFloat(document.getElementById('bfHeight')?.value);
+            const resultEl = document.getElementById('bfResult');
+            const categoryEl = document.getElementById('bfCategory');
+            
+            if (!gender || !age || !weight || !height) {
+                if (resultEl) resultEl.textContent = 'Fill all fields';
+                return;
+            }
+            
+            const bmi = weight / ((height / 100) ** 2);
+            let bodyFat;
+            
+            if (gender === 'male') {
+                bodyFat = (1.20 * bmi) + (0.23 * age) - 16.2;
+            } else {
+                bodyFat = (1.20 * bmi) + (0.23 * age) - 5.4;
+            }
+            
+            let category = '';
+            if (gender === 'male') {
+                if (bodyFat < 6) category = 'Essential Fat';
+                else if (bodyFat < 14) category = 'Athletes';
+                else if (bodyFat < 18) category = 'Fitness';
+                else if (bodyFat < 25) category = 'Average';
+                else category = 'Obese';
+            } else {
+                if (bodyFat < 14) category = 'Essential Fat';
+                else if (bodyFat < 21) category = 'Athletes';
+                else if (bodyFat < 25) category = 'Fitness';
+                else if (bodyFat < 32) category = 'Average';
+                else category = 'Obese';
+            }
+            
+            if (resultEl) resultEl.textContent = bodyFat.toFixed(1);
+            if (categoryEl) categoryEl.textContent = category;
+        }
+
+        // Water Intake Calculator
+        function calculateWater() {
+            const weight = parseFloat(document.getElementById('waterWeight')?.value);
+            const activity = parseInt(document.getElementById('waterActivity')?.value);
+            const resultEl = document.getElementById('waterResult');
+            const glassesEl = document.getElementById('waterGlasses');
+            
+            if (!weight || weight <= 0) {
+                if (resultEl) resultEl.textContent = 'Invalid weight';
+                return;
+            }
+            
+            const waterMl = weight * activity;
+            const waterLiters = (waterMl / 1000).toFixed(1);
+            const glasses = Math.round(waterMl / 250);
+            
+            if (resultEl) resultEl.textContent = waterLiters;
+            if (glassesEl) glassesEl.textContent = glasses;
+        }
+
+        window.calculateORM = calculateORM;
+        window.calculateBodyFat = calculateBodyFat;
+        window.calculateWater = calculateWater;
+    </script>
+</body>
+</html>

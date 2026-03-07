@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Gym House</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-dumbbell"></i>
+                <span>GYM HOUSE</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="classes.html">Classes</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li><a href="#" onclick="logout()" class="btn-nav">Logout</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>Welcome to Your Dashboard</h1>
+        <p id="welcomeMessage">Manage your fitness journey</p>
+    </section>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Profile</h3>
+                    <div id="userInfo">
+                        <p><strong>Username:</strong> <span id="userName">Loading...</span></p>
+                        <p><strong>Email:</strong> <span id="userEmail">Loading...</span></p>
+                        <p><strong>Member ID:</strong> <span id="userId">Loading...</span></p>
+                    </div>
+                    <button class="btn btn-outline" onclick="editProfile()">Edit Profile</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>My Classes</h3>
+                    <p>View and manage your class bookings</p>
+                    <a href="classes.html" class="btn btn-outline">Browse Classes</a>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress</h3>
+                    <p>Track your fitness progress and achievements</p>
+                    <button class="btn btn-outline">View Progress</button>
+                </div>
+
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Membership</h3>
+                    <p>Manage your membership and billing</p>
+                    <a href="pricing.html" class="btn btn-outline">View Plans</a>
+                </div>
+            </div>
+
+            <div class="dashboard-stats">
+                <h2>Your Stats</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-fire"></i>
+                        <h3>0</h3>
+                        <p>Workouts This Month</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>0</h3>
+                        <p>Hours Trained</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-trophy"></i>
+                        <h3>0</h3>
+                        <p>Goals Achieved</p>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-calendar"></i>
+                        <h3>0</h3>
+                        <p>Days Active</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 Gym House. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Load user data on dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = JSON.parse(localStorage.getItem('user'));
+            
+            if (!user) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Update dashboard with user info
+            document.getElementById('welcomeMessage').textContent = `Welcome back, ${user.username}!`;
+            document.getElementById('userName').textContent = user.username;
+            document.getElementById('userEmail').textContent = user.email;
+            document.getElementById('userId').textContent = user.id;
+        });
+
+        function editProfile() {
+            alert('Profile editing feature coming soon!');
+        }
+    </script>
+</body>
+</html>
