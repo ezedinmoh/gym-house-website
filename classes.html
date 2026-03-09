@@ -20,9 +20,20 @@
                 <li><a href="classes.html" class="active">Classes</a></li>
                 <li><a href="pricing.html">Pricing</a></li>
                 <li><a href="blog.html">Blog</a></li>
+                <li><a href="tools.html">Tools</a></li>
+                <li><a href="workout-planner.html">Workout Plans</a></li>
                 <li><a href="contact.html">Contact</a></li>
                 <li><a href="login.html" class="btn-nav">Login</a></li>
             </ul>
+            <div class="nav-actions">
+                <button id="searchBtn" class="icon-btn" title="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <label class="dark-mode-toggle">
+                    <input type="checkbox" id="darkModeToggle">
+                    <i class="fas fa-moon"></i>
+                </label>
+            </div>
             <div class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
@@ -176,6 +187,23 @@
             </div>
         </div>
     </footer>
+
+    <!-- Search Modal -->
+    <div id="searchModal" class="search-modal">
+        <div class="search-modal-content">
+            <button id="searchClose" class="search-close">&times;</button>
+            <h2>Search</h2>
+            <input type="text" id="searchInput" placeholder="Search classes, trainers, blog posts..." class="search-input">
+            <div id="searchResults" class="search-results">
+                <p>Start typing to search...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
