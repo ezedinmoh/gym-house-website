@@ -181,14 +181,14 @@ if (loginForm) {
             const data = await response.json();
             
             if (response.ok) {
-                showMessage(messageEl, '✅ Login successful! Redirecting to dashboard...', 'success');
+                showMessage(messageEl, '✅ Login successful! Redirecting...', 'success');
                 
                 // Store user data in localStorage
                 localStorage.setItem('user', JSON.stringify(data.user));
                 
-                // Redirect to dashboard or home page
+                // Redirect to home page
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'index.html';
                 }, 1500);
             } else {
                 showMessage(messageEl, data.message || 'Invalid email or password', 'error');
@@ -201,14 +201,14 @@ if (loginForm) {
             const user = users.find(u => u.email === email);
             
             if (user) {
-                showMessage(messageEl, '✅ Login successful! Redirecting to dashboard...', 'success');
+                showMessage(messageEl, '✅ Login successful! Redirecting...', 'success');
                 
                 // Store current user session
                 localStorage.setItem('user', JSON.stringify(user));
                 
-                // Redirect to dashboard
+                // Redirect to home page
                 setTimeout(() => {
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'index.html';
                 }, 1500);
             } else {
                 showMessage(messageEl, 'Invalid email or password. Please register first.', 'error');
@@ -583,19 +583,68 @@ function shareContent(title, text, url) {
     }
 }
 
+// Update Navigation based on login status
+function updateNavigation() {
+    const user = localStorage.getItem('user');
+    const navMenu = document.getElementById('navMenu');
+    
+    if (!navMenu) return;
+    
+    // Find the login button in nav menu
+    const loginBtn = navMenu.querySelector('a[href="login.html"]');
+    
+    if (user) {
+        // User is logged in - show profile dropdown
+        const userData = JSON.parse(user);
+        
+        if (loginBtn) {
+            // Replace login button with profile dropdown
+            const profileDropdown = document.createElement('li');
+            profileDropdown.className = 'profile-dropdown';
+            profileDropdown.innerHTML = `
+                <button class="profile-btn">
+                    <i class="fas fa-user-circle"></i>
+                    <span>${userData.username || 'User'}</span>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="profile-menu">
+                    <a href="dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="#" onclick="logout(); return false;"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            `;
+            
+            loginBtn.parentElement.replaceWith(profileDropdown);
+            
+            // Add click event to toggle dropdown
+            const profileBtn = profileDropdown.querySelector('.profile-btn');
+            const profileMenu = profileDropdown.querySelector('.profile-menu');
+            
+            profileBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                profileMenu.classList.toggle('active');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', () => {
+                profileMenu.classList.remove('active');
+            });
+        }
+    } else {
+        // User is not logged in - show login/signup buttons
+        if (loginBtn) {
+            // Login button already exists, just make sure it's visible
+            loginBtn.style.display = 'block';
+        }
+    }
+}
+
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Check authentication for protected pages
-    const user = checkAuth();
+    checkAuth();
     
-    // Update UI if user is logged in
-    if (user) {
-        const loginLinks = document.querySelectorAll('a[href="login.html"]');
-        loginLinks.forEach(link => {
-            link.textContent = 'Dashboard';
-            link.href = 'dashboard.html';
-        });
-    }
+    // Update navigation based on login status
+    updateNavigation();
     
     // Initialize features
     initDarkMode();
@@ -613,4 +662,5 @@ document.addEventListener('DOMContentLoaded', () => {
     window.toggleFavorite = toggleFavorite;
     window.printWorkoutPlan = printWorkoutPlan;
     window.shareContent = shareContent;
+    window.logout = logout;
 });

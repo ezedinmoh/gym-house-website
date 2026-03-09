@@ -1893,6 +1893,113 @@ body.dark-mode .footer {
     transform: translateY(-3px);
 }
 
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+}
+
+.profile-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--gradient);
+    color: var(--white);
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.profile-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+}
+
+.profile-btn i:first-child {
+    font-size: 1.2rem;
+}
+
+.profile-btn i:last-child {
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.profile-menu.active .profile-btn i:last-child {
+    transform: rotate(180deg);
+}
+
+.profile-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    min-width: 200px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.profile-menu.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.profile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 1rem 1.5rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.profile-menu a:last-child {
+    border-bottom: none;
+}
+
+.profile-menu a:hover {
+    background: var(--light-color);
+    color: var(--primary-color);
+}
+
+.profile-menu a i {
+    width: 20px;
+    text-align: center;
+}
+
+/* Mobile Profile Dropdown */
+@media (max-width: 768px) {
+    .profile-dropdown {
+        width: 100%;
+    }
+    
+    .profile-btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .profile-menu {
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
+        box-shadow: none;
+        border: 1px solid #eee;
+    }
+    
+    .profile-menu.active {
+        transform: none;
+    }
+}
+
 .social-links-large {
     display: flex;
     gap: 1rem;
