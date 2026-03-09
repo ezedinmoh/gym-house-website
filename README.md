@@ -41,13 +41,10 @@ A fully responsive fitness website with interactive calculators, workout planner
 
 ---
 
-## 🚀 Live Demo
+## 🚀 Live
 
-**Live Site**: [Add your Netlify URL here]
+**Live Site**: https://gym-house-website.netlify.app
 
-**GitHub**: [Add your GitHub repo URL here]
-
----
 
 ## 🛠️ Technologies
 
@@ -65,7 +62,7 @@ A fully responsive fitness website with interactive calculators, workout planner
 
 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR-USERNAME/gym-house-website.git
+git clone https://github.com/ezedinmoh/gym-house-website.git
 ```
 
 2. Open `index.html` in your browser
